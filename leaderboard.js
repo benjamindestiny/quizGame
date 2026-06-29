@@ -1,5 +1,5 @@
 // ============================================
-// LEADERBOARD - COMPLETE JAVASCRIPT
+// LEADERBOARD - COMPLETE JAVASCRIPT (FIXED)
 // ============================================
 
 // ---------- DOM ELEMENTS ----------
@@ -50,20 +50,43 @@ function escapeHTML(text) {
 
 // ---------- CLEAR LEADERBOARD ----------
 function clearLeaderboard() {
-    if (confirm('Are you sure you want to clear all leaderboard scores?')) {
+    if (confirm('⚠️ Are you sure you want to clear all leaderboard scores?')) {
         localStorage.removeItem('quizLeaderboard');
         renderLeaderboard();
+        showToast('🗑️ Leaderboard cleared!');
     }
 }
 
 // ---------- BACK TO QUIZ ----------
 function backToQuiz() {
-    window.location.href = 'index.html';
+    // 🔧 FIX: Change this to 'quiz.html' if your main file is quiz.html
+    window.location.href = 'quiz.html';  // or 'index.html'
+}
+
+// ---------- TOAST NOTIFICATION ----------
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    if (!toast) {
+        // Create toast if it doesn't exist
+        const toastEl = document.createElement('div');
+        toastEl.id = 'toast';
+        toastEl.className = 'toast';
+        toastEl.textContent = message;
+        document.body.appendChild(toastEl);
+        setTimeout(() => toastEl.remove(), 3000);
+        return;
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
 // ---------- EVENT LISTENERS ----------
-document.getElementById('backToQuizBtn').addEventListener('click', backToQuiz);
-document.getElementById('clearLeaderboardBtn').addEventListener('click', clearLeaderboard);
+const backBtn = document.getElementById('backToQuizBtn');
+const clearBtn = document.getElementById('clearLeaderboardBtn');
+
+if (backBtn) backBtn.addEventListener('click', backToQuiz);
+if (clearBtn) clearBtn.addEventListener('click', clearLeaderboard);
 
 // ---------- INITIALISE ----------
 renderLeaderboard();
