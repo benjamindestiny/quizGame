@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏆 Leaderboard</title>
+    <link rel="stylesheet" href="leaderboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+    <div class="leaderboard-container">
+        <div class="leaderboard-content">
+            <div class="leaderboard-header">
+                <div class="header-icon">🏆</div>
+                <h1>Leaderboard</h1>
+                <p>Top scores of all time</p>
+                <span id="leaderboardCount" class="leaderboard-count">0 entries</span>
+            </div>
+
+            <div id="leaderboardList" class="leaderboard-list">
+                <!-- Leaderboard entries will be inserted by JavaScript -->
+            </div>
+
+            <div class="leaderboard-actions">
+                <button id="backToQuizBtn" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Quiz
+                </button>
+                <button id="clearLeaderboardBtn" class="btn-clear">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+</body>
+</html>
